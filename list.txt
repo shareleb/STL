@@ -1,0 +1,63 @@
+
+********************list***********************
+链表:  非连续,非顺序的存储结构,数据元素的逻辑顺序是通过链表中的指针连接次序来实现的,结点可以在运行时动态生成,一个时数据域,另一个是指针域.
+list每次插入或者删除一个元素,就会配置或者释放一个元素的空间,
+
+list是一个 双向循环链表.
+list的迭代器
+list容器容器不能像vector一样以普通的指针作为迭代器,因为其结点不能保证在同一块连续的内存空间上,list迭代器必须有能力指向list的结点,并有能力进行正确的递增,递减,取值,成员函数取值,成员存储操作, 所谓成员取用递增,递减是指递增下一个结点,取得结点得数据值
+迭代器具备前移,后移得能力,  所以list提供bidirectional_iterator   
+list插入和删除不会造成原有得迭代器失效
+
+
+list构造函数
+list<T> lst    list采用模板类是实现,对象的默认构造
+list<T> lst1(beg,end)    构造函数将(beg,end)区间元素拷贝给本身
+list<T>lst(n,elem)    将n个elem拷贝给本身
+list<T>lst(const list &lst)  拷贝构造函数
+
+list插入和删除元素.
+push_back(elem) 在尾部添加一个元素
+pop_back()     删除容器最后一个元素
+push_front(elem)    在容器开头添加一个元素,
+pop_front()      删除第一个元素.
+
+insert(pos,elem) 在pos位置插入elem元素得拷贝,返回新数据得位置.    *****pos为迭代器
+insert(pos,n,elem)  在pos位置插入n个elem元素,无返回值.
+insert(pos,beg,end)    在pos位置插入beg,end区间得数据,无返回值.
+clear()    删除容器所有的元素
+erase(beg,end)    删除beg,end区间的数据,返回下一个元素的位置
+erase(pos)     删除pos位置的数据,返回下一个数据的位置
+remove(elem)    删除容器中所有域elem值匹配的元素.
+
+list迭代器不支持随机访问
+
+list大小操作
+size()    返回容器中元素的个数
+empty()    判断容器是否为空
+resize(int num)  重新指定容器的长度为num,若容器变长,则以默认值填充新位置,如果变短,则把末尾超出容器长度的元素删掉.  默认为0;
+resize(int num,elem)  重载  以elem填充.
+
+
+list赋值操作
+assign(beg,end)   将beg,end区间的数据拷贝给本身
+assign(n,elem)  将n个elem拷贝给本身
+lsit &operator=(const list &lst)  重载等号操作
+swap(lst)  域lst交换元素.
+front()   返回容器第一个元素
+back()   返回容器的最后一个元素
+L.sort()    默认从小到大
+L.sort(compare)  ;        
+没有[] ,at 操作.
+
+list反转排序
+reverse()  反转链表,
+sort      排序,默认从小到大
+
+
+list的sort(beg,end)不能这样用, 因为所有不支持随机访问的迭代器,都不可以使用系统提供的算法.
+如果不支持用系统提供的算法,那么这个类内部会提供.  
+
+对于自定义类型的数据,必须要指定排序规则.
+
+

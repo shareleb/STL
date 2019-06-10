@@ -1,0 +1,58 @@
+
+ *******************deque***********************
+
+双端数组,双向开口,没有容量的概念,因为它是动态的以分段连续空间组合而成,随时可以增加一段新的空间并连接起来.
+vector旧空间不够,就重新分配一份大的空间,然后复制元素,再释放空间, 而deque不会,所以deque不必提供reserve功能
+中控器来维护这个指针数组,指针数组可以指向一片空间.
+
+deque构造函数
+deque<T>d  默认构造
+deque<T>d1(beg,end)    构造函数将(beg,end)区间中的元素拷贝给本身
+deque(n,elem)   构造函数将n个elem拷贝给本身
+deque(cosnt deque &deq) 拷贝构造函数
+
+
+deque赋值操作
+assign(beg,end) 将beg,end区间的数据拷贝赋值给本身
+assign(n,elem)  将n个elem拷贝赋值给本身
+deque& operator=(const deque & deq)   重载符号操作
+swap(deq)  将deq与本身的元素互换
+
+deque大小操作
+size() 返回容器中元素的个数
+empty()   判断是否为空
+resize(num)  重新指定容器的长度为num,若容器变长,则以默认值填充新位置,如果变短,则把末尾超出容器长度的元素删掉.  默认为0;
+
+resize(int num,elem)  重载  以elem填充
+
+deque的插入与删除操作
+push_back(elem)  在容器尾添加一个元素
+push_front(elem)  在容器头部添加一个元素
+pop_back()         删除最后一个元素
+pop_front()       删除第一个元素
+
+at(idx)    返回索引idx所指的数据,如果idx越界,抛出异常
+[]   返回索引idx所致的数据,如果越界,直接挂掉
+front()   返回容器第一个元素
+back()   返回容器的最后一个元素
+
+insert( pos,elem)   在pos位置插入一个elem元素的拷贝,返回新数据的位置. pos是迭代器
+insert(pos ,n,elem) 在pos位置插入n个elem元素,无返回值
+insert(pos,beg,end)   在pos位置上插入beg,end区间的元素,无返回值
+clear()    删除容器所有的元素
+erase(beg,end)   删除beg,end区间的数据,返会下一个元素的位置
+erase(pos) 删除pos位置的数据,返回下一个数据的位置
+
+
+
+
+
+
+
+
+
+
+
+
+
+
